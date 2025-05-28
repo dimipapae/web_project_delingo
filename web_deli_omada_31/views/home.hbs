@@ -1,0 +1,159 @@
+
+
+<div id="logo">Deli&Go</div>
+
+{{#unless userEmail}}
+{{#unless userArea}}
+<!-- Modal για επιλογή περιοχής -->
+<div id="area-modal" class="modal2">
+  <div class="modal-content2">
+    <h2>Επίλεξε την περιοχή σου</h2>
+    <select id="area-select">
+      <option value="" disabled selected>-- Επιλέξτε περιοχή --</option>
+      {{#each patrasAreas}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+    <button id="confirm-area">Συνέχεια</button>
+  </div>
+</div>
+{{/unless}}
+{{/unless}}
+
+
+{{#if userEmail}}
+  <div id="user-info-box">
+    <div class="user-row">
+      <img src="/images/user_email.jpg" alt="Email Icon" class="user-icon" />
+      <span>{{userEmail}}</span>
+    </div>
+    <div class="user-row">
+      <img src="/images/user_location.png" alt="Location Icon" class="user-icon" />
+      <div class="user-address-info">
+        <strong>Διεύθυνση Παράδοσης:</strong>
+        <p>{{userAddress}}, {{userArea}}</p>
+      </div>
+    </div>
+    <div class="my-orders-link">
+        <a href="/orders" style="color: red; font-weight: bold;">Οι Παραγγελίες Μου</a>
+      </div>
+    <div class="my-orders-link">
+      <a href="/favorites" style="color: red; font-weight: bold;">Αγαπημένα Καταστήματα</a>
+    </div>
+  </div>
+  {{/if}}
+
+  {{#if userArea}}
+  <!--  Κουμπί Αποσύνδεσης -->
+      <div class="logout-container">
+        <a href="/logout" id="logout-link">
+          {{#if isGuest}}Έξοδος{{else}}Αποσύνδεση{{/if}}
+        </a>
+      </div>
+{{/if}}
+
+
+<div class="home-container">
+  <p class="user-address" id="user-address"></p>
+
+
+<div class="food-section" style="position: relative;">
+  <input type="text" id="search-box" placeholder="🔍 Αναζήτηση" autocomplete="off" />
+
+  <!-- Εδώ θα εμφανίζονται τα αποτελέσματα -->
+    <div id="search-results" ></div>
+    <script src="/js/search.js"></script>
+
+
+    <div class="food-categories"> 
+      <div class="category">
+        <img src="/images/kafes.png" alt="Καφές" />
+        <span>Καφέδες</span>
+      </div>
+      <div class="category">
+        <img src="/images/souvlaki.png" alt="Σουβλάκι" />
+        <span>Σουβλάκια</span>
+      </div>
+      <div class="category">
+        <img src="/images/pizza.png" alt="Πίτσα" />
+        <span>Πίτσα</span>
+      </div>
+      <div class="category">
+        <img src="/images/burger.png" alt="Μπέργκερ" />
+        <span>Μπέργκερ</span>
+      </div>
+      <div class="category">
+        <img src="/images/kineziko.png" alt="Κινέζικο" />
+        <span>Κινέζικο</span>
+      </div>
+      <div class="category">
+        <img src="/images/mexikaniko.png" alt="Μεξικάνικο" />
+        <span>Μεξικάνικο</span>
+      </div>
+      <div class="category">
+        <img src="/images/crepes.png" alt="Κρέπα" />
+        <span>Κρέπα</span>
+      </div>
+      <div class="category">
+        <img src="/images/glyka.png" alt="Γλυκό" />
+        <span>Γλυκό</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<script>
+  document.querySelectorAll('.food-categories .category').forEach(el => {
+    el.addEventListener('click', () => {
+      const categoryName = el.querySelector('span').innerText.trim();
+      const encodedCategory = encodeURIComponent(categoryName);
+      window.location.href = `/category/${encodedCategory}`;
+    });
+  });
+
+
+ //  Logout functionality
+  const logoutBtn = document.getElementById('logout-button');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      window.location.href = '/logout';
+    });
+  }
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('area-modal');
+    const select = document.getElementById('area-select');
+    const confirmBtn = document.getElementById('confirm-area');
+
+    if (modal) {
+      modal.style.display = 'flex'; // Εμφάνισε modal
+
+      confirmBtn.addEventListener('click', () => {
+        const area = select.value;
+        if (!area) return alert('Παρακαλώ επίλεξε μία περιοχή.');
+
+        // Στείλε POST request για να αποθηκευτεί προσωρινά στο session
+        fetch('/guest/area', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ area })
+        })
+        .then(res => {
+          if (res.ok) {
+            modal.style.display = 'none';
+            location.reload(); 
+          } else {
+            alert('Σφάλμα κατά την αποθήκευση περιοχής.');
+          }
+        });
+      });
+    }
+  });
+</script>

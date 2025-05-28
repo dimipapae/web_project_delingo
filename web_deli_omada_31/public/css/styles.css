@@ -1,0 +1,1111 @@
+/* Reset & base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    min-height: 100vh;
+    padding-bottom: 60px; /* για να μη καλύπτεται το footer */
+    position: relative;
+  }
+  
+
+  
+  /* Splash screen */
+  #splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease;
+  }
+  
+  #splash.fade-out {
+    opacity: 0;
+  }
+  
+ 
+
+   #welcome-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    height: 100vh;
+    background-image: url('/images/food-dok-1.png');
+    background-size: cover;
+    background-position: center;
+    text-align: right;
+    color: rgb(113, 38, 38);
+    padding-left: 40%; /*για απόσταση από δεξί άκρο */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    box-sizing: border-box;
+  } 
+  
+  #welcome-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-align: right;
+  }
+  
+  .button-group {
+    display: flex; 
+    flex-direction: column; 
+    gap: 1px;
+    margin-top: 10px;
+    align-items: flex-end;
+    /* justify-content: flex-start; */
+    /* width: 40%; */
+    padding-right: -40%; /*ίδια με welcome-section για ευθυγράμμιση */
+  }
+
+
+  #welcome-section button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border: none;
+    background-color: #e53935;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  } 
+  
+  #welcome-section button:hover {
+    background-color: #b71c1c;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Scroll Section */
+  .section {
+    display: flex;
+    padding: 50px;
+    background-color: #fff;
+  }
+  
+  .section .half-width:first-child img {
+    width: 65%; /* μικρότερη εικόνα */
+    margin: auto;
+    display: block;
+  }
+
+
+  
+  .section .half-width:last-child p {
+    font-size: 1.2rem; /* μεγαλύτερη γραμματοσειρά */
+    line-height: 1.8;
+    margin-top: 20px;
+  }
+  
+
+  .half-width {
+    width: 50%;
+    padding: 20px;
+  }
+  
+  .half-width img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  /* About Section */
+  .about-section {
+    padding: 50px 50px 100px;
+    background-color: #fff;
+  }
+  
+  .about-content {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .about-text, .contact-info {
+    flex: 1;
+    max-width: 48%;
+  }
+  
+  .about-text h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .contact-info h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 44px; /* Για να ευθυγραμμιστεί με το "About us" */
+  }
+  
+  .contact-info p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Footer */
+  footer {
+    position: fixed;
+    right: 20px;
+    bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+
+  /* Overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9998;
+  }
+  
+  /* Login Modal */
+  #login-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: #333;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  #login-modal h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  #login-modal label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  #login-modal input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #login-modal button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: #e53935;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #login-modal button:hover {
+    background-color: #b71c1c;
+  }
+
+  /* Signup Modal */
+#signup-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: #333;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  #signup-modal h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  #signup-modal label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  #signup-modal input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #signup-modal button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: #e53935;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #signup-modal button:hover {
+    background-color: #b71c1c;
+  }
+
+/* Autocomplete Suggestions */
+/* Autocomplete Suggestions */
+.suggestions {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* width: calc(100% - 20px); Ίδιο πλάτος με το input */
+    max-height: 200px;
+    width: 80%
+    /* overflow-y: auto;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+    /*margin-top: 5px; Μικρή απόσταση από το input */
+}
+
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 0.9rem; /* Μικρότερο font για ευανάγνωστη λίστα */
+    border-bottom: 1px solid #eee; /* Γραμμή ανάμεσα στις επιλογές */
+}
+
+.suggestions div:last-child {
+    border-bottom: none; /* Αφαίρεσε γραμμή από την τελευταία επιλογή */
+}
+
+.suggestions div:hover {
+    background-color: #f8f8f8;
+}
+
+.home-container {
+    margin: 100px 20px 20px 20px;
+    
+  }
+  
+#user-address {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.food-section {
+    max-width: 600px;
+    margin: 0 auto;
+    /* padding: 20px; */
+    padding: 20px 20px 0px 20px;
+    position: relative; /* σημαντικό για το absolute positioning */
+    z-index: 1; /* απλό επίπεδο */
+  }
+  
+#search-box {
+  outline: 1.6px solid rgb(9, 9, 172); 
+  width: 100%;
+  
+
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+#search-results {
+  position: absolute;
+  top: 63px; /* ή όσο χρειάζεται κάτω από το input */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 560px;
+  left: 50%;
+  transform: translateX(-50%); /* Κεντράρισμα */
+
+  background: #ffdada; /* ή white αν θες */
+  border: 1px solid red;
+  border-radius: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: none; /* να ελέγχεται από JS */
+}
+/* Εμφάνιση αποτελεσμάτων */
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #dfdbdb;
+  transition: background-color 0.15s ease-in-out;
+}
+
+
+.search-result-item span {
+  font-size: 0.9rem; /* ή 0.85rem για πιο διακριτικό */
+  color: #333;
+}
+
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background-color: #f5f5f5;
+}
+
+.search-result-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+/* Κατηγορίες */
+.food-categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 600px;
+  margin: 20px auto 0; /* margin-top 20px για να μην κολλάει στα αποτελέσματα */
+  position: relative;
+  z-index: 1; /* κάτω από τα αποτελέσματα */
+}
+
+  
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    /* border: 1px solid #ddd; */
+    border: 1.6px solid #ea93c0;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: transform 0.2s;
+  }
+  
+  .category:hover {
+    transform: scale(1.05);
+  }
+  
+  .category img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 8px;
+  }
+  
+  .category span {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .error {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+#logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #e53935;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-family: 'Pacifico', cursive;
+  z-index: 100;
+  width: max-content;
+}
+
+
+#user-info-box {
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  max-width: 280px;
+  z-index: 100;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.user-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.user-icon {
+  width: 24px;
+  height: 25px;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+.user-address-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-results-container {
+  max-width: 900px;
+  margin: 40px auto 40px;
+  /* margin-top:20px;
+  margin-left:auto; */
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.category-results-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #e53935;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.store-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.store-card:hover {
+  transform: scale(1.02);
+}
+
+
+.store-card img {
+  width: 80px;       /* μικρό μέγεθος, προσαρμόζεις όπως θέλεις */
+  height: 80px;      /* το ίδιο με το width για να είναι τετράγωνο */
+  border-radius: 50%; /* αυτό το κάνει κυκλικό */
+  object-fit: cover;  /* για να μην παραμορφώνεται η εικόνα */
+}
+
+.store-card h3 {
+  margin: 12px 0 6px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.store-card p {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.no-results {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 0;
+  padding: 20px;
+  text-align: start;
+}
+
+
+#logo2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 30px 20px;
+}
+
+.shop-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.shop-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+h2 {
+  font-size: 22px;
+  margin: 0 0 25px 20px;
+  color: #444;
+}
+
+.subcategory-section {
+  margin: 0 0 30px 20px;
+}
+
+.subcategory-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.menu-grid {
+  display: flex;
+  flex-direction: column; /* κάθετα */
+  gap: 16px;
+}
+
+.menu-card {
+  display: flex;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.2s;
+  width: 100%;
+  max-width: 600px;
+}
+
+.menu-card:hover {
+  transform: scale(1.01);
+}
+
+.menu-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.menu-info {
+  padding: 8px;
+  flex-grow: 1;
+}
+
+.menu-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  color: #222;
+}
+
+.menu-description {
+  font-size: 13px;
+  color: #555;
+}
+
+
+.menu-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f1f1f1;
+  border-right: 2px solid #ccc;
+  padding: 40px 15px 20px 15px;
+  position: fixed; 
+  top: 0px; 
+  left: 0;
+  height: calc(100vh); 
+  overflow-y: auto;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.sidebar-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+}
+
+.category-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.category-list li {
+  margin-bottom: 10px;
+}
+
+.category-list a {
+  text-decoration: none;
+  color: #0077cc;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.category-list a:hover {
+  color: #005fa3;
+  text-decoration: underline;
+}
+
+/* Κύριο περιεχόμενο */
+.menu-main-content {
+  flex-grow: 1;
+  padding: 20px 30px;
+   margin-left: 200px; 
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+.menu-card {
+  position: relative;
+  /* υπάρχον style */
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.qty-btn.minus {
+  background-color: #f44336;
+}
+
+.qty-number {
+  min-width: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0px;
+  
+  right: 0;
+  width: 300px;
+  height: calc(100vh);
+  background-color: #fafafa;
+  border-left: 2px solid #ccc;
+  padding: 15px;
+  box-shadow: -3px 0 5px rgba(0,0,0,0.1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 20;
+}
+
+.cart-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.cart-items {
+  flex-grow: 1;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cart-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cart-item-name {
+  flex-grow: 1;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cart-item-qty {
+  font-weight: bold;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cart-summary {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+  font-size: 16px;
+}
+
+
+.logout-container {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+}
+
+#logout-link {
+  color: #f83f2a;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+#logout-link:hover {
+  color: #c32c1b;
+}
+
+.top-links {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link,
+.logout-link {
+  color: #f83f2a;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.nav-link:hover,
+.logout-link:hover {
+  color: #c32c1b;
+}
+
+.top-links2 {
+  position: fixed;
+  top: 30px;
+  right: 350px;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link2,
+.logout-link2 {
+  color: #f83f2a;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.nav-link2:hover,
+.logout-link2:hover {
+  color: #c32c1b;
+}
+
+
+
+.modal2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content2 {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.orders-page {
+    max-width: 800px;
+    margin: 2rem auto;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  .orders-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #444;
+  }
+
+  .orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .order-card {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+  }
+
+  .order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  }
+
+  .order-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .store-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #eee;
+  }
+
+  .store-name {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+
+  .order-id, .order-date {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0.2rem 0;
+  }
+
+  .order-items ul {
+    padding-left: 1rem;
+    margin: 0.5rem 0 0;
+    color: #555;
+  }
+
+  .order-items li {
+    margin-bottom: 0.3rem;
+  }
+
+  .no-orders {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+  }
+
+  #confirm-area {
+  background: transparent;
+  color:white;
+  border: 2px solid red;
+  background-color: red;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  padding: 6px 25px; 
+  font-size: 0.9rem; 
+}
+
+#confirm-area:hover {
+  background: white;
+  color:red;
+}
+#area-select {
+  width: 100%;           
+  padding: 10px;         
+  font-size: 1rem;       
+  border-radius: 6px;    
+  margin-bottom: 16px;  
+}
+
+/* Κουμπί καρδιάς "Αγαπημένα" */
+.favorite-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: #888;
+  transition: color 0.3s ease;
+  padding: 0;
+  outline: none;
+}
+
+.favorite-btn:hover,
+.favorite-btn.favorited {
+  color: #e63946; /* Κόκκινο για ενεργό/hover */
+}
+
+.heart-icon {
+  pointer-events: none; 
+}
+
+
+
+.favorite-shops {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Κεντράρισμα οριζόντια */
+  gap: 25px; 
+  margin: 30px auto; 
+  max-width: 1200px; 
+  padding: 0 20px; /* Padding στα πλάγια */
+}
+
+/* Βελτιωμένη κάρτα καταστήματος */
+.shop-card {
+  background: #fff;
+  border-radius: 10px; /* Μεγαλύτερο border-radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Πιο αισθητικό shadow */
+  padding: 20px;
+  width: 220px; /* Ελαφρώς μεγαλύτερο πλάτος */
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.shop-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.shop-card img {
+  width: 100%;
+  height: 140px; /* Μεγαλύτερο ύψος */
+  object-fit: cover; 
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.shop-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #222;
+  font-weight: 600; /* Πιο έντονο κείμενο */
+}
+
+.shop-card a {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #1d3557;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.shop-card a:hover {
+  background: #457b9d;
+  transform: scale(1.05); /* Μικρή κλίμακα στο hover */
+}
+
+/* Μήνυμα όταν δεν υπάρχουν αγαπημένα */
+.favorite-shops p {
+  font-style: italic;
+  color: #666;
+  margin: 30px 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.favorites-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #444;
+    margin: 2rem auto;
+    font-family: "Segoe UI", sans-serif;
+  }

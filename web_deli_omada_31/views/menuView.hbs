@@ -1,0 +1,86 @@
+<div class="top-links2">
+  <a href="/home" class="nav-link2">Αρχική</a>
+  <a href="/logout" class="logout-link2">{{#if isGuest}}Έξοδος{{else}}Αποσύνδεση{{/if}}</a>
+</div>
+
+
+
+<div class="menu-page" >
+  <!-- Sidebar Αριστερά (κατηγορίες) -->
+  <aside class="sidebar">
+    <h3 class="sidebar-title">Κατηγορίες</h3>
+    <ul class="category-list">
+      {{#each groupedMenu}}
+        <li><a href="#{{@key}}">{{@key}}</a></li>
+      {{/each}}
+    </ul>
+  </aside>
+
+  <!-- Περιεχόμενο Μενού -->
+  <div class="menu-main-content">
+    <div id="logo2">
+      <img src="/images/{{shopLogo}}" 
+     alt="{{shopName}}" 
+     class="shop-logo" 
+     onerror="this.onerror=null; this.src='/images/default shop.jpg';" />
+
+      <span class="shop-name">{{shopName}}</span>
+
+        {{#if userEmail}} <!-- Μόνο αν είναι logged in -->
+            <button class="favorite-btn" data-shop-id="{{shopId}}" title="Προσθήκη στα Αγαπημένα">
+            <span class="heart-icon">&#9825;</span> <!-- κενή καρδιά -->
+            </button>
+        {{/if}}
+
+    </div>
+
+    <h2>Μενού Καταστήματος</h2>
+
+    {{#if groupedMenu}}
+      {{#each groupedMenu}}
+        <div class="subcategory-section" id="{{@key}}">
+          <h3 class="subcategory-title">{{@key}}</h3>
+          <div class="menu-grid">
+            {{#each this}}
+              <div class="menu-card" data-kodikos="{{this.kodikos}}">
+                <img src="/images/{{this.eikona}}" alt="{{this.onoma}}" class="menu-image"/
+                onerror="this.onerror=null; this.src='/images/defaultproduct.jpg';" />
+                <div class="menu-info">
+                  <h4 class="menu-title">{{this.onoma}} - {{this.timh}}€</h4>
+                  <p class="menu-description">{{this.perigrafi}}</p>
+                </div>
+                <div class="quantity-controls">
+                  <button class="qty-btn minus">-</button>
+                  <span class="qty-number" data-kodikos="{{this.kodikos}}">0</span>
+                  <button class="qty-btn plus">+</button>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <p>Δεν υπάρχουν διαθέσιμα είδη για αυτό το κατάστημα.</p>
+    {{/if}}
+  </div>
+
+  <!-- Καλάθι Αγορών (δεξιά) -->
+  <aside class="cart-sidebar">
+    <img src="/images/cart.jpg" alt="Καλάθι" class="cart-icon" />
+    <div class="cart-items">
+      <!-- Εδώ θα γεμίζει δυναμικά με JS -->
+    </div>
+    <div class="payment-method">
+    <label><input type="radio" name="paymentMethod" value="Κάρτα" checked> Με Κάρτα</label><br>
+    <label><input type="radio" name="paymentMethod" value="Μετρητά"> Με Μετρητά</label>
+    </div>
+    <button class="checkout-btn">Ολοκλήρωση Παραγγελίας</button>
+    <div class="cart-summary">
+      <span>Σύνολο: <span class="cart-total-amount">0.00</span>€</span>
+      <span>Τεμάχια: <span class="cart-total-items">0</span></span>
+    </div>
+  </aside>
+</div>
+
+<script src="/js/cart.js"></script>
+<script src="/js/favorites.js"></script>

@@ -1,0 +1,112 @@
+<!-- Logo -->
+<div id="logo">Deli&Go</div>
+
+{{#if showSplash}}
+<!-- Splash Screen -->
+<div id="splash">
+  <img src="/images/food-delivery-lapd.gif" alt="Loading..." />
+</div>
+{{/if}}
+
+<!-- Welcome Section -->
+<div id="welcome-section" class="hidden">
+  <h1>Welcome</h1>
+
+  <div class="button-group">
+    <button id="login-btn">Σύνδεση</button>
+    <button id="signup-btn">Εγγραφή</button>
+  </div>  
+
+  <form id="guest-form" class="guest-button">
+    <button type="button" onclick="continueAsGuest()">Συνέχεια ως επισκέπτης</button>
+  </form>
+
+
+</div>
+
+<!-- Scroll Content -->
+<div id="scroll-content">
+  <section class="section">
+    <div class="half-width">
+      <img src="/images/food-img.jpg" alt="food" />
+    </div>
+    <div class="half-width">
+      <h1 style="margin-top: 100px; font-size: 1.6em;">Ό,τι θέλεις, όποτε το θέλεις!</h1>
+      <p>
+        Ξυπνάς και χρειάζεσαι τον πρώτο καφέ της ημέρας; Στο φέρνουμε.
+        Πείνασες και δεν έχεις όρεξη για μαγείρεμα; Από burger μέχρι μακαρονάδες, έχουμε αυτό που λαχταράς.
+        Θες κάτι δροσερό για να το συνοδεύσεις; Παγωμένα αναψυκτικά, έτοιμα για παράδοση.
+        Όλα όσα αγαπάς, φτάνουν στην πόρτα σου με ένα κλικ.
+        Deli&Go – Η γεύση... σε βρίσκει!
+      </p>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>About us</h2>
+        <p>
+          Το Deli&Go είναι η νέα, γρήγορη και αξιόπιστη υπηρεσία online παραγγελίας φαγητού, καφέ και αναψυκτικών, αποκλειστικά για την Πάτρα.
+          Συνεργαζόμαστε με αγαπημένα καταστήματα της πόλης και φέρνουμε στην πόρτα σου ό,τι τραβάει η όρεξή σου από πρωινό και καφέ μέχρι μεσημεριανό, βραδινό ή ένα γρήγορο σνακ.
+          Είμαστε εδώ για να κάνουμε την καθημερινότητά σου πιο εύκολη, πιο νόστιμη και πιο… πατρινή.
+          Με λίγα μόνο κλικ, το αγαπημένο σου φαγητό έρχεται σε σένα, χωρίς καθυστέρηση.
+          Deli&Go — Η πόλη τρώει έξω, ενώ μένει μέσα!
+        </p>
+      </div>
+      <div class="contact-info">
+        <h3>Στοιχεία επικοινωνίας:</h3>
+        <p>Τηλέφωνο: 210-1234567</p>
+        <p>Email: info@deliandgo.gr</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer>
+  &copy; Deli&Go 2025
+</footer>
+
+<!-- Modals -->
+{{> modals }}
+
+
+<script>
+  window.showLoginModal = {{showLoginModal}};
+  window.showSignupModal = {{showSignupModal}};
+</script>
+
+<script>
+  document.getElementById("login-btn").addEventListener("click", () => {
+    document.getElementById("login-modal").classList.remove("hidden");
+    document.getElementById("overlay").classList.remove("hidden");
+  });
+
+  document.getElementById("signup-btn").addEventListener("click", () => {
+    document.getElementById("signup-modal").classList.remove("hidden");
+    document.getElementById("overlay").classList.remove("hidden");
+  });
+</script>
+
+  <script>
+    
+    function continueAsGuest() {
+    const btn = document.querySelector('#guest-form button');
+    if (btn) btn.disabled = true; // Απενεργοποίησε το κουμπί
+
+    fetch('/guest', { method: 'POST' })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = '/home'; // Redirect μόνο αν είναι successful
+        } else {
+          console.error('Server returned error:', response.status);
+          if (btn) btn.disabled = false;
+        }
+      })
+      .catch(err => {
+        console.error('Network error:', err);
+        if (btn) btn.disabled = false;
+      });
+  }
+  </script>

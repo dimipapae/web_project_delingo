@@ -1,0 +1,81 @@
+<!-- Login Modal -->
+<div id="login-modal" name="login-modal" class="{{#unless showLoginModal}}{{#unless loginError}}hidden{{/unless}}{{/unless}}"> 
+  <div class="modal-content">
+    <h2>Συνδέσου στο Deli&Go</h2>
+
+    {{#if loginError}}
+      <p class="error">{{loginError}}</p>
+    {{/if}}
+
+    <form method="POST" action="/login">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="example@mail.com" />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="••••••••" />
+
+    <button id="continue-btn" name="continue-btn" type="submit">Συνέχεια</button>
+</form>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" class="{{#if showLoginModal}}visible{{else if showSignupModal}}visible{{else if loginError}}visible{{else if signupError}}visible{{else}}hidden{{/if}}"></div>
+
+<!-- Signup Modal -->
+<div id="signup-modal" name="signup-modal" class="{{#unless showSignupModal}}{{#unless signupError}}hidden{{/unless}}{{/unless}}"> 
+  <div class="modal-content">
+    <h2>Γίνε μέλος μας</h2>
+
+    {{#if signupError}}
+      <p class="error">{{signupError}}</p>
+    {{/if}}
+
+    <form method="POST" action="/signup">
+    <label for="signup-name">Όνομα:</label>
+    <input type="text" id="signup-name" name="signup_name" placeholder="π.χ. Γιώργος"
+    pattern="[A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ\s]+" 
+    title="Το όνομα πρέπει να περιέχει μόνο ελληνικά ή λατινικά γράμματα και να έχει μήκος 2 έως 30 χαρακτήρες."
+     minlength="2" maxlength="30" required 
+  
+  />
+
+    <label for="signup-surname">Επώνυμο:</label>
+    <input type="text" id="signup-surname" name="signup_surname" placeholder="π.χ. Παπαδόπουλος" 
+    pattern="[A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ\s]+" minlength="2" maxlength="30" required 
+    title="Το όνομα πρέπει να περιέχει μόνο ελληνικά ή λατινικά γράμματα και να έχει μήκος 2 έως 30 χαρακτήρες." 
+   />
+
+    <label for="signup-email">Email:</label>
+    <input type="email" id="signup-email" name="signup_email" placeholder="example@mail.com" required
+    title="Εισάγετε έγκυρο email"/>
+
+    <label for="signup-password">Password:</label>
+    <input type="password" id="signup-password" name="signup_password" placeholder="••••••••" required
+    title="Εισάγετε κωδικό πρόσβασης"/>
+
+    <label for="signup-address">Διεύθυνση:</label>
+    <input type="text" id="signup-address" name="signup_address" placeholder="π.χ. Έλληνος Στρατιώτου 10"
+    pattern="^[Α-Ωα-ωΆ-Ώά-ώA-Za-z\s]+ \d+[A-Za-z]?$" 
+    title="Η διεύθυνση πρέπει να είναι στη μορφή: Οδός Αριθμός" requires  />
+
+    <label for="signup-area">Περιοχή:</label>
+    <input type="text" id="signup-area" name="signup_area" placeholder="π.χ. Αγία Σοφία" 
+    pattern="^[Α-Ωα-ωΆ-Ώά-ώA-Za-z\s]{2,}$" 
+    title="Η περιοχή πρέπει να περιέχει μόνο γράμματα" >
+    <div id="area-suggestions" class="suggestions"/></div>
+    
+    <label for="signup-floor">Όροφος:</label>
+    <input type="text" id="signup-floor" name="signup_floor" placeholder="π.χ. 2ος" 
+    pattern="^(ισόγειο|Ισόγειο|\d{1,2}(ος|ος|ος)?)$" 
+    title="Δεκτό παράδειγμα: π.χ. 2ος ή Ισόγειο"/>
+
+    <label for="signup-phone">Τηλέφωνο:</label>
+    <input type="tel" id="signup-phone" name="signup_phone" placeholder="69XXXXXXXX" 
+    pattern="^(\+\d{1,4})?(69\d{8}|\d{10})$" 
+    title="Εισάγετε κινητό τηλέφωνο σε έγκυρη μορφή." />
+
+    <button id="signup-continue-btn" type="submit">Συνέχεια</button>
+</form>
+  </div>
+</div>

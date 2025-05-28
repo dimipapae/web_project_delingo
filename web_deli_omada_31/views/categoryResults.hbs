@@ -1,0 +1,33 @@
+<div id="logo">Deli&Go</div>
+
+<div class="top-links">
+  <a href="/home" class="nav-link">Αρχική</a>
+  <a href="/logout" class="logout-link">{{#if isGuest}}Έξοδος{{else}}Αποσύνδεση{{/if}}</a>
+</div>
+
+
+<div class="category-results-container">
+  <h2>{{categoryName}} στην περιοχή {{userArea}}</h2>
+
+  {{!-- <pre>{{json katastimata}}</pre> Αυτό θα εμφανίσει τα raw δεδομένα --}}
+
+  {{#if katastimata}}
+    <div class="store-grid">
+      {{#each katastimata}}
+        <div class="store-card">
+          <a href="/menu/{{this.kodikos}}">
+          <img src="/images/{{this.eikona}}" alt="{{this.onoma}}" /
+          onerror="this.onerror=null; this.src='/images/default shop.jpg';" />
+          <h3>{{this.onoma}}</h3>
+          <p>{{this.diefthinsi}}</p>
+          </a>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p class="no-results">
+      Δεν βρέθηκαν καταστήματα που προσφέρουν {{categoryName}} στην περιοχή σας.
+    </p>
+  {{/if}}
+</div>
+

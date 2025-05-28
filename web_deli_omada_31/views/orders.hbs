@@ -1,0 +1,31 @@
+<div class="orders-page">
+  <h1 class="orders-title">Οι παραγγελίες μου</h1>
+
+  {{#if orders.length}}
+    <div class="orders-list">
+      {{#each orders}}
+        <div class="order-card">
+          <div class="order-header">
+            <img src="{{storeImage}}" alt="{{storeName}}" class="store-image" 
+            onerror="this.onerror=null; this.src='/images/default shop.jpg';" />
+            <div>
+              <h2 class="store-name">{{storeName}}</h2>
+              <p class="order-id">Παραγγελία #{{orderId}}</p>
+              <p class="order-date">{{datetime}}</p>
+            </div>
+          </div>
+          <div class="order-items">
+            <strong>Περιεχόμενα:</strong>
+            <ul>
+              {{#each items}}
+                <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p class="no-orders">Δεν έχεις πραγματοποιήσει παραγγελίες ακόμη.</p>
+  {{/if}}
+</div>

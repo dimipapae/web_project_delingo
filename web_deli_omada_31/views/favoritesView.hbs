@@ -1,0 +1,15 @@
+<h2 class="favorites-title">Αγαπημένα Καταστήματα</h2>
+<div class="favorite-shops">
+  {{#if shops.length}}
+    {{#each shops}}
+      <div class="shop-card">
+        <img src="/images/{{this.eikona}}" alt="{{this.onoma}}" 
+        onerror="this.onerror=null; this.src='/images/default shop.jpg';" />
+        <h3>{{this.onoma}}</h3>
+        <a href="/menu/{{this.kodikos}}">Δες Μενού</a>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>Δεν έχεις αγαπημένα καταστήματα ακόμα.</p>
+  {{/if}}
+</div>
