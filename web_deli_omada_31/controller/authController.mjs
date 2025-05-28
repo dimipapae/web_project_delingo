@@ -7,8 +7,7 @@ export const handleLogin = async (req, res) => {
   const db = await getDbConnection();
 
 
-  console.log('Submitted email:', email); // 1
-  console.log('Submitted password:', password); // 2
+  console.log('Submitted email:', email); 
 
   const user = await db.get('SELECT * FROM PELATIS WHERE email = ?', [email]);
 
